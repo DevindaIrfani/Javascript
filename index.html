@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <body bgcolor= #AEE1E1></body>
+    <meta charset="utf-8" />
+    <title>Homework Javascript</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="initClock()">
+    <!--digital clock start-->
+    <div class="datetime">
+      <div class="date">
+        <span id="dayname">Day</span>
+        <span id="month">Month</span>
+        <span id="daynum">00</span>
+        <span id="year">Year</span>
+      </div>
+      <div class="time">
+        <span id="hour">00</span>
+        <span id="minutes">00</span>
+        <span id="seconds">00</span>
+        <span id="periode">AM</span>
+      </div>
+    </div>
+    <!--digital clock end-->
+
+    <script type="text/javascript">
+      function updateClock(){
+        var now = new Date();
+        var dname = now.getDay(),
+        mo = now.getMonth(),
+        dnum = now.getDate(),
+        yr = now.gateFullYear(),
+        hou = now.getHours(),
+        min = now.getMinutes(),
+        sec = now.getSeconds(),
+        pe = "AM";
+
+        if(hou == 0){
+          hou = 12;
+        }
+        if(hou > 12){
+          hou = hou-12;
+          pe = "PM";
+        }
+
+        Number.prototype.pad = function(digits){
+          for(var n = this.toString(); n.length < digits; n = 0 + n);
+          return n;
+        }
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satuday"];
+        var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+        var values = [week[dname, months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+        for(var i = 0; i < ids.length; i++)
+        document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+      }
+
+      function initClock(){
+        updateClock();
+        window.setInterval("updateClock()", 1);
+      }
+    </script>
+
+    <title>Celsius to Fahrenheit Temperature Converter</title>
+    <h2>Temperature Converter</h2>
+    <p>Type a value in the Celsius field to convert the value to Fahrenheit:</p>
+
+    <p>
+      <label>Celsius</label>
+      <input id="inputCelsius" type="number" placeholder="Celsius" oninput="temperatureConverter(this.value)" onchange="temperatureConverter(this.value)" />
+    </p>
+    <p>Fahrenheit: <span id="outputFahrenheit"></span></p>
+
+    <script>
+      function temperatureConverter(valNum) {
+        valNum = parseFloat(valNum);
+        document.getElementById("outputFahrenheit").innerHTML = valNum * 1.8 + 32;
+      }
+    </script>
+
+    Change Background Color : <input class="form-control" id="color" /><button type="button" class="btn btn-light" onclick="change()">Change</button>
+    </div>
+  </body>                                                                                                                                                                                                                     
+  <script src="./Convert.js"></script>
+  </body>
+</html>
